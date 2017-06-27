@@ -35,6 +35,7 @@ public class DatabaseMessageSourceTest<T> {
 	}
 	@Test
 	public void publisherMessageSourceTest(){
+		Assert.assertEquals("안녕", messageSource.getMessage("hello", null, Locale.KOREAN));
 		Subscriber<T> sub = (Subscriber<T>) subscriberMessageSource;
 		publisherMessageSource.update(sub);
 		Assert.assertEquals("테스트안녕", subscriberMessageSource.getMessage("hello", null, Locale.KOREAN));
