@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	
+	<bean id="messageSource" class="com.ag.utils.message.DatabaseMessageSource" init-method="init">
+		<property name="localeCodeService">
+			<ref bean="localeCodeService"/>
+		</property>
+		<property name="cacheSeconds">
+			<value>60</value>
+		</property>
+		<property name="isRefresh" value="true"/>
+	</bean>
+	<bean id="subscriberMessageSource" class="com.ag.utils.message.SubscriberMessageSource" init-method="init">
+		<property name="localeCodeService">
+			<ref bean="localeCodeService"/>
+		</property>
+		<property name="cacheSeconds">
+			<value>60</value>
+		</property>
+		<property name="isRefresh" value="true"/>
+	</bean>
+	
+	<bean id="localeCodeService" class="com.ag.utils.message.LocaleCodeServiceImpl" />
+	
+	<bean id="publisherMessageSource" class="com.ag.utils.message.PublisherMessageSource" init-method="init"/>
+	
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="ko" />
+	</bean>
+
+</beans>
