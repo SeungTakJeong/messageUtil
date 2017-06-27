@@ -141,7 +141,6 @@ public class SubscriberMessageSource<T> extends AbstractMessageSource implements
 			logger.error("Message Not FOUND");
 			throw new NoSuchMessageException(code);
 		}
-
 		return message;
 	}
 

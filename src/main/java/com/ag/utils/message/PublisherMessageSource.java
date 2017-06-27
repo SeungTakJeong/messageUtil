@@ -9,7 +9,6 @@ import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.util.Assert;
 
 public class PublisherMessageSource<T> implements LocaleCodeService<T>, InitializingBean{
 	
@@ -78,8 +77,6 @@ public class PublisherMessageSource<T> implements LocaleCodeService<T>, Initiali
 		cachedMessageSource.put("hello", messageMap);
 
 		publisher.subscribe(subscriberMessageSource);
-		
-		
 	}
 
 	@Override
@@ -87,7 +84,7 @@ public class PublisherMessageSource<T> implements LocaleCodeService<T>, Initiali
 	
 	public void init(){
 		
-		log.info("init");
+		log.info("initialize publisher");
 		this.publisher = sub -> {
 			
 			sub.onSubscribe(new Subscription() {
