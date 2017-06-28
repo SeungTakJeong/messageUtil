@@ -13,7 +13,7 @@ public class LocaleCodeServiceImpl implements LocaleCodeService {
 
 	public Map<String, Map<String, String>> getMessageCodeAll() {
 
-		log.info("getMessageCodeAll");
+		log.debug("getMessageCodeAll");
 
 		Map<String, Map<String, String>> messageSource = new HashMap<String, Map<String, String>>();
 

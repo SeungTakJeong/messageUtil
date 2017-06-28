@@ -154,22 +154,22 @@ public class SubscriberMessageSource<T> extends AbstractMessageSource implements
 	}
 
 	public void onSubscribe(Subscription s) {
-		logger.info("onSubscribe");
+		logger.debug("onSubscribe");
 		s.request(Long.MAX_VALUE);
 	}
 
 	public void onNext(T t) {
-		logger.info("onNext");
+		logger.debug("onNext");
 		Map<String, Map<String, String>> messageSource = (Map<String, Map<String, String>>) t;
 		messageSource.forEach((k,v)->this.cachedMessageSource.put(k,v));
 	}
 
 	public void onError(Throwable t) {
-		logger.info("onError");
+		logger.debug("onError");
 	}
 
 	public void onComplete() {
-		logger.info("onComplete");
+		logger.debug("onComplete");
 	}
 
 

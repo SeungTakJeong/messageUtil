@@ -34,6 +34,7 @@ public class DatabaseMessageSourceTest<T> {
 		Assert.assertEquals("로그인", messageSource.getMessage("login", null, Locale.KOREAN));
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Test
 	public void publisherMessageSourceTest(){
 		Assert.assertEquals("안녕", subscriberMessageSource.getMessage("hello", null, Locale.KOREAN));

@@ -92,14 +92,14 @@ public class PublisherMessageSource<T> implements LocaleCodeService<T>, Initiali
 	 */
 	public void init(){
 		
-		log.info("initialize publisher");
+		log.debug("initialize publisher");
 		this.publisher = sub -> {
 			
 			sub.onSubscribe(new Subscription() {
 				
 				@Override
 				public void request(long n) {
-					log.info("request");
+					log.debug("request");
 					try{
 						sub.onNext(cachedMessageSource);
 						
@@ -112,7 +112,7 @@ public class PublisherMessageSource<T> implements LocaleCodeService<T>, Initiali
 				
 				@Override
 				public void cancel() {
-					log.info("cancel");
+					log.debug("cancel");
 				}
 			});
 		};
