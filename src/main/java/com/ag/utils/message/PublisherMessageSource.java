@@ -79,9 +79,17 @@ public class PublisherMessageSource<T> implements LocaleCodeService<T>, Initiali
 		publisher.subscribe(subscriberMessageSource);
 	}
 
+	
+	/**
+	 * 별도의 유효성 검사 진행하지 않음
+	 */
 	@Override
 	public void afterPropertiesSet() throws Exception {}
 	
+	
+	/**
+	 * initialize publisher
+	 */
 	public void init(){
 		
 		log.info("initialize publisher");

@@ -20,6 +20,7 @@ public class DatabaseMessageSourceTest<T> {
 	@Autowired
 	private MessageSource messageSource;
 	
+	@SuppressWarnings("rawtypes")
 	@Autowired
 	private LocaleCodeService publisherMessageSource;
 	
@@ -33,9 +34,10 @@ public class DatabaseMessageSourceTest<T> {
 		Assert.assertEquals("login", messageSource.getMessage("login", null, Locale.ENGLISH));
 		Assert.assertEquals("로그인", messageSource.getMessage("login", null, Locale.KOREAN));
 	}
+	
 	@Test
 	public void publisherMessageSourceTest(){
-		Assert.assertEquals("안녕", messageSource.getMessage("hello", null, Locale.KOREAN));
+		Assert.assertEquals("안녕", subscriberMessageSource.getMessage("hello", null, Locale.KOREAN));
 		Subscriber<T> sub = (Subscriber<T>) subscriberMessageSource;
 		publisherMessageSource.update(sub);
 		Assert.assertEquals("테스트안녕", subscriberMessageSource.getMessage("hello", null, Locale.KOREAN));
